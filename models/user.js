@@ -8,6 +8,18 @@ var UserSchema =mongoose.Schema({
 	email:{
 		type:String,
 	},
+	gender:{
+		type:String
+	},
+	work:{
+		type:String
+	},
+	address:{
+		type:String,
+	},
+	phone:{
+		type:Number,
+	},
 	password:{
 		type:String, required: true, bcrypt:true
 	},

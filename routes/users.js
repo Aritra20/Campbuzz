@@ -24,6 +24,10 @@ router.post("/register",multer({dest: '../uploads/'}).single("upl"),function(req
 	// Get Form Values
 	var name = req.body.name;
 	var email = req.body.email;
+	var gender = req.body.gender;
+	var work = req.body.work;
+	var address = req.body.address;
+	var phone =req.body.phone;
 	var username = req.body.username;
 	var password = req.body.password;
 	var password2 = req.body.password2;
@@ -46,6 +50,10 @@ if( req.files && req.files.profileimage){
 req.checkBody("name","Name field is required").notEmpty();
 req.checkBody("email","Email field is required").notEmpty();
 req.checkBody("email","Email not valid").isEmail();
+req.checkBody("gender","Gender is required").notEmpty();
+req.checkBody("work","Designation is required").notEmpty();
+req.checkBody("address","Address is required").notEmpty();
+req.checkBody("phone","Must be numbers").isInt();
 req.checkBody("username"," Username is required").notEmpty();
 req.checkBody("password","password field is required").notEmpty();
 req.checkBody("password2","password donot match").equals(req.body.password);
@@ -57,6 +65,10 @@ if(errors){
 		errors: errors,
 		name: name,
 		email: email,
+		gender:gender,
+		work:work,
+		address:address,
+		phone:phone,
 		username: username,
 		password: password,
 		password2: password2
@@ -66,6 +78,10 @@ if(errors){
 	var newUser =new User({
 		name: name,
 		email: email,
+		gender:gender,
+		work:work,
+		address:address,
+		phone:phone,
 		username: username,
 		password: password,
 		profileimage: profileImageName
